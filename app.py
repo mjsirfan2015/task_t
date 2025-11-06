@@ -92,11 +92,11 @@ async def upload_file_and_question(
             "context": raw_text,
             "question": question
         })
-        return {
-            "result": response.content,
-        }
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Could not save file: {e}")
+    return {
+        "result": response.content,
+    }
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8000)

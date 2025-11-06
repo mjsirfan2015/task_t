@@ -1,6 +1,7 @@
 from datetime import datetime, timedelta, timezone
 import os
 from typing import Annotated
+from dotenv import load_dotenv
 from fastapi import Depends, HTTPException, status
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer, OAuth2PasswordBearer
 from sqlalchemy.orm import Session
@@ -8,6 +9,7 @@ from jwt import encode, decode, PyJWTError
 from pwdlib import PasswordHash
 from utils.orm import get_db, get_user_by_email
 from utils.schema import UserInDB, TokenData
+load_dotenv(".env")
 
 SECRET_KEY = os.getenv("SECRET_KEY")
 ALGORITHM = "HS256"
@@ -25,6 +27,8 @@ def get_password_hash(password):
     return pwd_context.hash(password)
 
 def create_access_token(data: dict, expires_delta: timedelta | None = None):
+    print("hi\n\n\n\n\n\n")
+    print(f"SECRET_KEY: {SECRET_KEY}\n\n\n\n\n\n")
     to_encode = data.copy()
     if expires_delta:
         expire = datetime.now(timezone.utc) + expires_delta
