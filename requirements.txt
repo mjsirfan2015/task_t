@@ -1,0 +1,10 @@
+langchain==1.0.3
+langchain-google-genai==3.0.1
+langchain_community
+sqlalchemy==2.0.44
+fastapi==0.121.0
+uvicorn==0.38.0
+python-dotenv==1.2.1
+pyjwt==2.10.1
+pwdlib[argon2]==0.3.0
+python-multipart==0.0.6
